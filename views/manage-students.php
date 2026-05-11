@@ -1,25 +1,28 @@
 <?php
 session_start();
-require_once "../includes/admin-auth.php"; // Ensures only admins
-require_once "../includes/db.php";
+require_once __DIR__ . "/../includes/admin-auth.php"; // Ensures only admins
+require_once __DIR__ . "/../includes/db.php";;
 
 // Fetch all students
-$sql = "SELECT id, full_name, email, created_at FROM users WHERE user_type='student' ORDER BY created_at ASC";
+$sql =
+  "SELECT id, full_name, email, created_at FROM users WHERE user_type='student' ORDER BY created_at ASC";
 $result = $conn->query($sql);
 
 // Handle delete action
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
-    $deleteId = $_POST['delete_id'];
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_id"])) {
+  $deleteId = $_POST["delete_id"];
 
-    $stmt = $conn->prepare("DELETE FROM users WHERE id=? AND user_type='student'");
-    $stmt->bind_param("i", $deleteId);
-    if ($stmt->execute()) {
-        header("Location: manage-students.php"); // refresh page after deletion
-        exit();
-    } else {
-        echo "Error deleting student.";
-    }
-    $stmt->close();
+  $stmt = $conn->prepare(
+    "DELETE FROM users WHERE id=? AND user_type='student'"
+  );
+  $stmt->bind_param("i", $deleteId);
+  if ($stmt->execute()) {
+    header("Location: manage-students.php"); // refresh page after deletion
+    exit();
+  } else {
+    echo "Error deleting student.";
+  }
+  $stmt->close();
 }
 ?>
 
@@ -92,17 +95,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
         <?php while ($row = $result->fetch_assoc()): ?>
         <tr>
           <td><?= $sn++ ?></td>
-          <td><?= htmlspecialchars($row['full_name']) ?></td>
-          <td><?= htmlspecialchars($row['email']) ?></td>
-          <td><?= date("d M Y", strtotime($row['created_at'])) ?></td>
+          <td><?= htmlspecialchars($row["full_name"]) ?></td>
+          <td><?= htmlspecialchars($row["email"]) ?></td>
+          <td><?= date("d M Y", strtotime($row["created_at"])) ?></td>
           <td>
             <form action="edit-student.php" method="get" style="display:inline;">
-              <input type="hidden" name="id" value="<?= $row['id'] ?>">
+              <input type="hidden" name="id" value="<?= $row["id"] ?>">
               <button type="submit" class="action-btn edit-btn">Edit</button>
             </form>
 
             <form action="" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this student?');">
-              <input type="hidden" name="delete_id" value="<?= $row['id'] ?>">
+              <input type="hidden" name="delete_id" value="<?= $row["id"] ?>">
               <button type="submit" class="action-btn delete-btn">Delete</button>
             </form>
           </td>

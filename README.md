@@ -1,6 +1,6 @@
 NIIT GROUP PROJECT
 
-dashboard edits - pending
+dashboard edits - pendi
 
 robotboy-exe: Link form to db ✓
 

@@ -307,7 +307,7 @@
     <div id="form-body">
       <h1 class="form-title">Admission Form</h1>
 
-      <?php if (isset($_GET['error']) && $_GET['error'] === 'email_exists'): ?>
+      <?php if (isset($_GET["error"]) && $_GET["error"] === "email_exists"): ?>
         <div style="background:#ffe5e5;padding:10px;border-radius:5px;color:#b30000;">
           An application with this email already exists.
         </div>
@@ -437,7 +437,7 @@
           <legend>ACCOUNT CREATION</legend>
           <div class="field-group full">
             <label for="account-email">Account Email (read-only):</label>
-            <input type="email" id="account-email" name="account-email" disabled />
+            <input type="email" id="account-email" readonly/>
           </div>
 
           <div class="field-group">
@@ -455,7 +455,7 @@
     </div>
   </div>
 
-  <?php require_once "../includes/footer.php"; ?>
+  <?php require_once __DIR__ . "/../includes/footer.php"; ?>
 
 <script src="../public/js/app.js"></script>
 

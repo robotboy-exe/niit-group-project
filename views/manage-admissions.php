@@ -1,15 +1,16 @@
 <?php
-require_once "../includes/admin-auth.php";
-require_once "../includes/db.php";
+require_once __DIR__ . "/../includes/admin-auth.php";
+require_once __DIR__ . "/../includes/db.php";
 
 // Only allow admins
-if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
-    header("Location: login.php");
-    exit();
+if (!isset($_SESSION["user_id"]) || $_SESSION["user_type"] !== "admin") {
+  header("Location: login.php");
+  exit();
 }
 
 // Fetch pending applications
-$sql = "SELECT id, full_name, email, program, registration_date FROM applications WHERE status = 'pending' ORDER BY registration_date ASC";
+$sql =
+  "SELECT id, full_name, email, program, registration_date FROM applications WHERE status = 'pending' ORDER BY registration_date ASC";
 $result = $conn->query($sql);
 ?>
 
@@ -132,21 +133,21 @@ $result = $conn->query($sql);
 <?php while ($row = $result->fetch_assoc()): ?>
 <tr>
   <td><?= $sn++ ?></td>
-  <td><?= htmlspecialchars($row['full_name']) ?></td>
-  <td><?= htmlspecialchars($row['email']) ?></td>
-  <td><?= htmlspecialchars($row['program']) ?></td>
-  <td><?= date("d M Y", strtotime($row['registration_date'])) ?></td>
+  <td><?= htmlspecialchars($row["full_name"]) ?></td>
+  <td><?= htmlspecialchars($row["email"]) ?></td>
+  <td><?= htmlspecialchars($row["program"]) ?></td>
+  <td><?= date("d M Y", strtotime($row["registration_date"])) ?></td>
   <td>
 
 <form action="../controllers/approve-application.php" method="post" class="action-form">
-<input type="hidden" name="application_id" value="<?= $row['id'] ?>">
+<input type="hidden" name="application_id" value="<?= $row["id"] ?>">
 <button type="submit" class="approve-btn" onclick="return confirm('Approve this application?')">
 ✔ Approve
 </button>
 </form>
 
 <form action="../controllers/reject-application.php" method="post" class="action-form">
-<input type="hidden" name="application_id" value="<?= $row['id'] ?>">
+<input type="hidden" name="application_id" value="<?= $row["id"] ?>">
 <button type="submit" class="reject-btn" onclick="return confirm('Reject this application?')">
 ✖ Reject
 </button>
