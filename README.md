@@ -1,6 +1,13 @@
-NIIT GROUP PROJECT
 
-dashboard edits - pendi
+
+# NIIT GROUP PROJECT
+
+
+### FRONTEND - 65% ++
+
+
+### BACKEND - 45 ++
+dashboard edits - done.
 
 robotboy-exe: Link form to db ✓
 
