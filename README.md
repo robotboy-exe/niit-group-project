@@ -24,8 +24,8 @@ Based on the system architecture, the following core modules are fully implement
 
 The logical routing and state machines for this application were formally designed prior to development. 
 
-* **Overall User Routing Logic:** Documented and mapped out in **1000778698.jpg**.
-* **Admin Control Module Architecture:** Documented and mapped out in **1000766570.jpg**.
+* **Overall User Routing Logic:** Documented and mapped out in **user-routing.jpg**.
+* **Admin Control Module Architecture:** Documented and mapped out in **admin-module.jpg**.
 
 ---
 
