@@ -33,7 +33,7 @@ The logical routing and state machines for this application were formally design
 
 * **Backend:** PHP (Server-side form processing, multi-role authentication routing, session handling, and database querying)
 * **Frontend:** HTML5, CSS3, JavaScript (Dynamic UI state rendering and responsive layout design)
-* **Version Control & Deployment:** Git, GitHub, Netlify
+* **Version Control:** Git, GitHub
 
 ---
 
